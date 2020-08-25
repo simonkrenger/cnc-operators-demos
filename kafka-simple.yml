@@ -1,0 +1,23 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: Kafka
+metadata:
+  name: my-cluster
+spec:
+  kafka:
+    version: 2.5.0
+    replicas: 3
+    storage:
+      type: ephemeral
+    listeners:
+      plain: {}
+      tls: {}
+      external:
+        type: nodeport
+        tls: false
+  zookeeper:
+    replicas: 1
+    storage:
+      type: ephemeral
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
